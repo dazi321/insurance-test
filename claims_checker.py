@@ -155,6 +155,12 @@ if st.button("🔍 Check for Discrepancies", type="primary", disabled=not (pdf_f
 
 ---
 
+**IMPORTANT INSTRUCTIONS:**
+- INCLUDE handwritten pen marks in your analysis - they may contain adjustments or corrections to amounts
+- If the PDF breaks down premiums into components (e.g., Admin/Excess Loss + Max Claims Liability), ADD THEM UP and compare the TOTAL to the CSV amount
+- If there are handwritten additions or corrections on the PDF, factor those into the final amounts
+- Only flag as DISCREPANCY if the final numbers don't match, NOT if they're just presented differently
+
 Compare the PDF invoice with the Excel/CSV data above. Check ONLY these 6 things:
 
 1. **Policy Number** - Does the policy number match in both documents?
@@ -162,9 +168,7 @@ Compare the PDF invoice with the Excel/CSV data above. Check ONLY these 6 things
 3. **Coverage Periods** - Does the coverage period match? If any employee has a different coverage period, list their name
 4. **Total Amounts** - Does the total invoice premium match? Do individual employee premiums match? List names where premiums don't match
 5. **Employee Count** - Does the employee count match in both documents?
-6. **Premium Per Employee** - Does each employee's premium match? List names where it doesn't match
-
-Ignore everything else (retroactive charges, dental vs medical, premium structures, etc.)
+6. **Premium Per Employee** - Does each employee's premium match? If PDF shows components, add them up first. Include any handwritten adjustments. List names where the TOTAL doesn't match
 
 Provide your response EXACTLY in this format:
 
@@ -241,10 +245,11 @@ Provide your response EXACTLY in this format:
 with st.sidebar:
     st.header("ℹ️ How to Use")
     st.markdown("""
-    1. Upload all PDF files (any order)
-    2. Upload all matching Excel files (any order)
-    3. Click "Check for Discrepancies"
-    4. Review results and download report
+    1. Enter your Claude API key
+    2. Upload all PDF files (any order)
+    3. Upload all matching Excel files (any order)
+    4. Click "Check for Discrepancies"
+    5. Review results and download report
     
     **File Matching:**
     Files are automatically matched by name. 
