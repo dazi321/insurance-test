@@ -155,47 +155,44 @@ if st.button("🔍 Check for Discrepancies", type="primary", disabled=not (pdf_f
 
 ---
 
-**CRITICAL: READ THE ENTIRE PDF CAREFULLY**
-- This PDF likely has multiple pages - read ALL of them
-- Employee names are typically listed in detailed tables on later pages, not just the summary page
-- Look through the ENTIRE document to find ALL employee names and data
-- The first page is usually just a summary/cover page
+**IMPORTANT: READ ALL PAGES OF THE PDF**
+The PDF has multiple pages. Employee details are usually on pages 5-9, not just the first page. Make sure you read the ENTIRE document.
 
-**CRITICAL: UNDERSTANDING THE PDF TABLE STRUCTURE**
-- PDFs often have numbers stacked vertically in columns
-- ALWAYS look at the COLUMN HEADER to understand what the numbers mean
-- Common patterns:
-  * "Premium/Volume" column: TOP number = Premium, BOTTOM number = Volume
-  * "Premium/Weekly Benefit Volume": TOP number = Premium, BOTTOM number = Weekly Benefit
-  * "Premium/Covered Payroll Volume": TOP number = Premium, BOTTOM number = Covered Payroll
-- **NEVER add these stacked numbers together** - they represent different things
-- When comparing premiums, ONLY use the premium number (usually the top one)
-- Look for a "Total Premium" column - this is the final premium total for that employee
+**HOW TO CHECK EACH ITEM:**
 
-**CRITICAL: EMPLOYEE COUNTING (Only applies to #5 Employee Count check)**
-- The CSV has a "Relationship" column that shows "Employee", "Spouse", "Child", etc.
-- When COUNTING employees (#5), only count rows where Relationship = "Employee"
-- DO NOT count "Spouse", "Child", or other dependent rows when counting employees
-- However, when COMPARING NAMES (#2), you should still verify that ALL names match (including spouses and dependents if listed in the PDF)
+1. **Policy Number**: Simply check if the policy number matches in both documents.
 
-**IMPORTANT INSTRUCTIONS:**
-- INCLUDE handwritten pen marks in your analysis - they may contain adjustments or corrections to amounts
-- **Understanding Premium Calculations:**
-  - When comparing premiums between PDF and CSV, look at the TOTAL PREMIUM for each employee
-  - If the PDF has multiple coverage columns (Dental, Vision, Voluntary, etc.), the Total Premium column shows the sum
-  - Don't add "Premium" + "Volume" numbers from the same column - they're different data types
-  - If there are handwritten additions, add those to the totals
-- Only flag as DISCREPANCY if the final PREMIUM numbers don't match, NOT if they're just presented differently
+2. **Names**: 
+   - List ALL names that appear in the PDF (check ALL pages, especially pages 5-9)
+   - List ALL names that appear in the CSV
+   - Compare them and note any names that are missing from either document
 
-Compare the PDF invoice with the Excel/CSV data above. Check ONLY these 7 things:
+3. **Coverage Periods**:
+   - Different employees can have different coverage periods
+   - For each employee, check if their coverage period is the same in both documents
+   - If coverage periods are NOT shown in the PDF at all, say "No coverage periods shown in PDF"
 
-1. **Policy Number** - Does the policy number match in both documents?
-2. **Names** - Compare ALL names from BOTH documents (including employees and any dependents listed). List any names that don't match or are missing from one document vs the other. MAKE SURE TO CHECK ALL PAGES OF THE PDF.
-3. **Coverage Periods** - Does the coverage period match? If any employee has a different coverage period, list their name
-4. **Total Amounts** - Does the total invoice premium match? Do individual employee TOTAL PREMIUMS match? List names where premiums don't match. Remember: compare TOTAL PREMIUM, not individual coverage components.
-5. **Employee Count** - Count the number of PRIMARY EMPLOYEES (not dependents). In the PDF, count unique employee names. In the CSV, only count rows where Relationship = "Employee". Does the count match?
-6. **Premium Per Employee** - Does each employee's TOTAL PREMIUM match between documents? Look at the "Total Premium" column in the PDF. Include any handwritten adjustments. List names where the TOTAL doesn't match.
-7. **Plan Tiers** - Does each employee's plan tier match (e.g., "Employee", "Employee + Family", "Employee + Spouse", "Employee + Children")? List names where the tier doesn't match.
+4. **Total Amounts**:
+   - In the PDF, look at the far right column titled "Total Premium"
+   - Add up all the Total Premium amounts for all employees
+   - Compare this total to the CSV
+   - Also check if individual employees' Total Premium amounts match between documents
+
+5. **Employee Count**:
+   - Count how many employees are in the PDF (check all pages)
+   - Count how many employees are in the CSV (count only rows where Relationship = "Employee")
+   - Compare the counts
+
+6. **Premium Per Employee**:
+   - In the PDF, there are many benefit columns (Accident, Dental, Vision, etc.)
+   - If a column is blank for an employee, they don't have that benefit
+   - If a column has numbers, they have that benefit
+   - **IMPORTANT**: Some columns show two numbers stacked like "2.34/130,000" - the TOP number is the premium, the BOTTOM number is the volume. Only use the TOP number (premium).
+   - For each employee, list which benefits they have and how much each costs
+   - Then show their Total Premium
+   - Compare this to the CSV
+
+**INCLUDE HANDWRITTEN NOTES**: If there are pen marks or handwritten numbers on the PDF, include those in your analysis.
 
 Provide your response EXACTLY in this format:
 
@@ -204,11 +201,10 @@ Provide your response EXACTLY in this format:
 **Results:**
 1. Policy Number: [MATCH or state the discrepancy]
 2. Names: [MATCH or list names that don't match/are missing]
-3. Coverage Periods: [MATCH or list employee names with different periods]
-4. Total Amounts: [MATCH or state discrepancy and list affected employee names]
-5. Employee Count: [MATCH or state the discrepancy]
-6. Premium Per Employee: [MATCH or list employee names with mismatched premiums]
-7. Plan Tiers: [MATCH or list employee names with mismatched plan tiers]
+3. Coverage Periods: [MATCH or "No coverage periods shown in PDF" or list employee names with different periods]
+4. Total Amounts: [MATCH or state the discrepancy with specific numbers]
+5. Employee Count: [MATCH or state the counts: "PDF has X employees, CSV has Y employees"]
+6. Premium Per Employee: [MATCH or list each employee with discrepancies showing their benefits and premiums]
 
 **Summary:** [One sentence: either "All fields match" or "X discrepancies found"]"""
                         }
