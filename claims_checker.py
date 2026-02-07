@@ -15,12 +15,16 @@ st.set_page_config(
 st.title("📋 Insurance Claims Verification")
 st.markdown("Upload PDFs and Excel files to verify data matches")
 
-# API key input (will be stored in secrets for deployment)
-api_key = st.text_input("Enter your Claude API key:", type="password", help="Get your API key from console.anthropic.com")
-
-if not api_key:
-    st.warning("Please enter your Claude API key to continue")
-    st.stop()
+# API key - check secrets first, then allow manual entry
+try:
+    api_key = st.secrets["ANTHROPIC_API_KEY"]
+    st.success("✅ API key loaded from secure storage")
+except:
+    api_key = st.text_input("Enter your Claude API key:", type="password", help="Get your API key from console.anthropic.com")
+    if not api_key:
+        st.warning("Please enter your Claude API key to continue")
+        st.info("💡 **Tip for admin:** Store the API key in Streamlit secrets (Settings → Secrets) so users don't need to enter it each time.")
+        st.stop()
 
 # File upload section
 st.header("Upload Files")
