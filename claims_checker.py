@@ -13,7 +13,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("📋 Insurance Claims Verification")
+st.title("📋 Guardian Insurance Claims Verification")
 st.markdown("Upload PDFs and Excel files to verify data matches")
 
 # API key - check secrets first, then allow manual entry
