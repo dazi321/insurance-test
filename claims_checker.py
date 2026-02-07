@@ -155,25 +155,30 @@ if st.button("🔍 Check for Discrepancies", type="primary", disabled=not (pdf_f
 
 ---
 
-Compare the data in the PDF invoice/claim with the Excel/CSV data above. 
+Compare the PDF invoice with the Excel/CSV data above. Check ONLY these 6 things:
 
-Focus on verifying these fields match:
-- Policy numbers
-- Names
-- Addresses  
-- Dates (period dates, payment dates)
-- Amounts (premiums, totals, payments)
+1. **Policy Number** - Does the policy number match in both documents?
+2. **Names** - List any names that don't match or are missing from one document vs the other
+3. **Coverage Periods** - Does the coverage period match? If any employee has a different coverage period, list their name
+4. **Total Amounts** - Does the total invoice premium match? Do individual employee premiums match? List names where premiums don't match
+5. **Employee Count** - Does the employee count match in both documents?
+6. **Premium Per Employee** - Does each employee's premium match? List names where it doesn't match
 
-Ignore handwritten notes or annotations on the documents.
+Ignore everything else (retroactive charges, dental vs medical, premium structures, etc.)
 
-Provide your response in this format:
+Provide your response EXACTLY in this format:
 
 **Status:** [MATCH or DISCREPANCY FOUND]
 
-**Key Fields Checked:**
-- Field name: [match or mismatch details]
+**Results:**
+1. Policy Number: [MATCH or state the discrepancy]
+2. Names: [MATCH or list names that don't match/are missing]
+3. Coverage Periods: [MATCH or list employee names with different periods]
+4. Total Amounts: [MATCH or state discrepancy and list affected employee names]
+5. Employee Count: [MATCH or state the discrepancy]
+6. Premium Per Employee: [MATCH or list employee names with mismatched premiums]
 
-**Summary:** Brief explanation of any discrepancies or confirmation that all data matches."""
+**Summary:** [One sentence: either "All fields match" or "X discrepancies found"]"""
                         }
                     ]
                 }]
@@ -236,11 +241,10 @@ Provide your response in this format:
 with st.sidebar:
     st.header("ℹ️ How to Use")
     st.markdown("""
-    1. Enter your Claude API key
-    2. Upload all PDF files (any order)
-    3. Upload all matching Excel files (any order)
-    4. Click "Check for Discrepancies"
-    5. Review results and download report
+    1. Upload all PDF files (any order)
+    2. Upload all matching Excel files (any order)
+    3. Click "Check for Discrepancies"
+    4. Review results and download report
     
     **File Matching:**
     Files are automatically matched by name. 
