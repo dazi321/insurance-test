@@ -161,6 +161,12 @@ if st.button("🔍 Check for Discrepancies", type="primary", disabled=not (pdf_f
 - Look through the ENTIRE document to find ALL employee names and data
 - The first page is usually just a summary/cover page
 
+**CRITICAL: EMPLOYEE COUNTING**
+- The CSV has a "Relationship" column (or similar) that shows "Employee", "Spouse", "Child", etc.
+- Only count rows where Relationship = "Employee"
+- DO NOT count "Spouse", "Child", or other dependent rows as separate employees
+- One employee can have multiple rows (for themselves + dependents), but that's still ONE employee
+
 **IMPORTANT INSTRUCTIONS:**
 - INCLUDE handwritten pen marks in your analysis - they may contain adjustments or corrections to amounts
 - If the PDF breaks down premiums into components (e.g., Admin/Excess Loss + Max Claims Liability), ADD THEM UP and compare the TOTAL to the CSV amount
